@@ -1,5 +1,7 @@
 package com.frankmoley.lil.designpatternsapp;
 
+import com.frankmoley.lil.designpatternsapp.prototype.ProtoFalse;
+import com.frankmoley.lil.designpatternsapp.prototype.ProtoTrue;
 import com.frankmoley.lil.designpatternsapp.singleton.SingA;
 import com.frankmoley.lil.designpatternsapp.singleton.SingB;
 import org.junit.Assert;
@@ -17,6 +19,15 @@ public class DesignPatternsAppApplicationTests {
     @Autowired
     SingB singB2;
 
+    @Autowired
+    ProtoTrue true1;
+    @Autowired
+    ProtoTrue true2;
+    @Autowired
+    ProtoFalse false1;
+    @Autowired
+    ProtoFalse false2;
+
     @Test
     public void testSingletons(){
         SingA singA1 = SingA.getInstance();
@@ -25,6 +36,15 @@ public class DesignPatternsAppApplicationTests {
         Assert.assertSame(singA1, singA2);
         Assert.assertNotNull(singB1);
         Assert.assertSame(singB1, singB2);
+    }
+
+    @Test
+    public void testPrototypes() {
+        Assert.assertNotNull(true1);
+        Assert.assertNotSame(true1, true2);
+
+        Assert.assertNotNull(false1);
+        Assert.assertSame(false1, false2);
     }
 
 }
